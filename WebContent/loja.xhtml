@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="/WEB-INF/templates/template-loja-virtual.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets">
+ 
+	 <ui:define name="conteudo">
+		 
+		 <h:form>
+		 
+		 <h:selectOneMenu value="#{produtosBean.idDoProdutoSelecionado}">
+			 
+			 <f:selectItems
+				value="#{produtosBean.produtos}"
+				var="produto"
+				itemValue="#{produto.id}"
+				itemLabel="#{produto.nome}">
+			 </f:selectItems>
+		 
+		 </h:selectOneMenu>
+		 
+		 <h:commandButton value="Detalhes" action="#{produtosBean.carregaProduto}" />
+		 
+		 </h:form>
+	 
+		 <ui:include src="/WEB-INF/partials/produto-info.xhtml">
+		 	<ui:param name="produto" value="#{produtosBean.produtoSelecionado}" />
+		 </ui:include>
+
+	</ui:define>
+ 
+</ui:composition>
